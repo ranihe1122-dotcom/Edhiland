@@ -72,6 +72,7 @@ body {
     box-shadow: 2px 0 5px rgba(0,0,0,0.1);
     overflow-y: auto; 
     z-index: 1000; /* 层级低于 top-bar */
+    box-sizing: border-box; /* 增加这个属性以确保 padding 不会撑开 */
 }
 
 .sidebar-header {
@@ -130,7 +131,7 @@ body {
     /* 关键: 顶部外边距 (margin-top) 必须是顶部栏的高度 */
     margin-top: 60px; 
     /* 关键: 左侧外边距 (margin-left) 必须是侧边栏的宽度 */
-    margin-left: 260px; /* 220px 宽度 + 40px padding */
+    margin-left: 260px; /* 220px 宽度 + 左右 padding 40px */
     padding: 40px;
 }
 
@@ -151,6 +152,33 @@ body {
     padding-bottom: 10px;
     font-weight: bold;
 }
+
+/* === (新增) 文本排版样式 === */
+.content-section h3 {
+    font-size: 1.5rem;
+    color: #556b2f; /* 复古绿 */
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+.content-section h4 {
+    font-size: 1.1rem;
+    color: #4a3f35;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-style: italic;
+}
+.content-section ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    line-height: 1.6;
+}
+.content-section ul li {
+    margin-bottom: 10px;
+}
+/* === (结束) 文本排版样式 === */
+
 
 /* 5. "Personality" 滑块样式 (复古) */
 .trait {
@@ -194,4 +222,77 @@ body {
        可以帮助 text-align: center (在 .sidebar-header 上) 更好地居中它 */
     display: block;
     margin: 0 auto; /* 另一种居中方式 */
+}
+/* 注意：修复了你原文件末尾多余的一个 '}' 
+*/
+
+
+/* ================================================= */
+/* === (关键) 响应式布局 / 手机适配 === */
+/* ================================================= */
+@media (max-width: 768px) {
+
+    /* 1. 侧边栏: 取消固定, 变为 100% 宽度, 放在顶部栏下方 */
+    .sidebar {
+        position: relative; /* 取消 fixed 固定定位 */
+        width: 100%; /* 占满全宽 */
+        top: 0; /* 重置 top */
+        margin-top: 60px; /* 关键: 把它推到 top-bar 下面 */
+        height: auto; /* 高度自动 */
+        z-index: 999; /* 低于 top-bar */
+        box-shadow: none; /* 取消阴影 */
+        border-bottom: 2px solid #c8bdae; /* 添加一个底边框 */
+    }
+
+    /* 2. 侧边栏 logo: 在移动端让 logo 小一点 */
+    .sidebar-header img {
+        max-width: 50%; 
+    }
+    
+    /* 3. 侧边栏头部: 减少边距 */
+    .sidebar-header {
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+    }
+
+    /* 4. 导航项: 水平排列并居中 */
+    .sidebar-nav {
+        display: flex; /* 使用 flex 布局 */
+        flex-wrap: wrap; /* 自动换行 */
+        justify-content: center; /* 居中 */
+    }
+    .sidebar-nav li {
+        margin: 5px;
+    }
+    .sidebar-nav a {
+        padding: 8px 12px;
+    }
+    
+    /* 5. 滚动到顶部按钮: 变小一点 */
+    .scroll-button {
+        margin-top: 1rem;
+        padding: 8px;
+        width: 80%;
+        margin-left: 10%;
+    }
+
+    /* 6. 内容区: 占满全宽, 减小内边距 */
+    .content {
+        margin-left: 0; /* 关键: 取消左外边距 */
+        margin-top: 0; /* 关键: 取消顶部外边距 (因为它现在在 sidebar 之后) */
+        padding: 20px; /* 减小内边距 */
+    }
+    
+    /* 7. 内容区卡片: 减小内边距 */
+    .content-section {
+        padding: 20px;
+    }
+
+    /* 8. 标题: 减小字体 */
+    .content-section h2 {
+        font-size: 1.6rem;
+    }
+    .content-section h3 {
+        font-size: 1.3rem;
+    }
 }
