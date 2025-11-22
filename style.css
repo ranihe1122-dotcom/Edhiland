@@ -11,7 +11,7 @@ body {
     /* === [美化] 添加了花卉背景 === */
     background-color: #f5f1e8; /* 后备颜色 */
     /* 这是一个来自 transparenttextures.com 的免费平铺纹理 */
-    background-image: url('https://www.transparenttextures.com/patterns/floral.png');
+    background-image: url('https://f2.toyhou.se/file/f2-toyhou-se/images/110666016_25bTPngmYqZWy6D.jpg');
     background-repeat: repeat; /* 平铺 */
 
     /* === [修复] 添加这行代码, 强制禁止所有水平滚动 === */
