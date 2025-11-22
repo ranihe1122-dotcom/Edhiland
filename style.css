@@ -8,19 +8,33 @@ body {
     font-family: Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", sans-serif;
     color: #4a3f35;
     
-    /* === [背景] 替换为新图片 === */
-    background-color: #f5f1e8; /* 后备颜色 */
-    background-image: url('https://f2.toyhou.se/file/f2-toyhou-se/images/110666844_UaQVFbj3yDSmeyt.jpg');
-    
-    /* [背景] 关键: 将背景图设为固定、铺满、不重复 */
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center center;
-    background-attachment: fixed; /* 制造视差滚动效果 */
+    /* [背景] 后备颜色 (背景图片已移到 ::before 伪元素) */
+    background-color: #f5f1e8; 
 
     /* === [修复] 强制禁止所有水平滚动 === */
     overflow-x: hidden; 
 }
+
+/* * === [修复] 移动端背景模糊问题 ===
+ * 我们使用 ::before 伪元素来创建一个固定的背景层。
+ * 这比 'background-attachment: fixed' 在移动端上表现更稳定。
+*/
+body::before {
+    content: '';
+    position: fixed; /* 固定在视口 */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1; /* 把它放在所有内容的后面 */
+    
+    /* [背景] 你的背景图片 */
+    background-image: url('https://f2.toyhou.se/file/f2-toyhou-se/images/110666844_UaQVFbj3yDSmeyt.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
 
 /* 3. 左侧导航栏 */
 .sidebar {
@@ -39,7 +53,8 @@ body {
     z-index: 1000;
     box-sizing: border-box; 
     
-    font-family: Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", sans-serif;
+    /* === [字体] 侧边栏也换成 ZCOOL 字体 === */
+    font-family: 'ZCOOL XiaoWei', serif;
 }
 
 .sidebar-header {
@@ -85,6 +100,9 @@ body {
     border-radius: 0;
     cursor: pointer;
     margin-top: 2rem;
+    
+    /* [字体] 确保按钮也使用新字体 */
+    font-family: 'ZCOOL XiaoWei', serif;
 }
 
 
@@ -97,7 +115,9 @@ body {
 }
 
 .content-section {
-    background-color: #fffdfa; 
+    /* === [透明度] #fffdfa 对应的 RGBA, 80% 不透明度 === */
+    background-color: rgba(255, 253, 250, 0.8); 
+    
     padding: 30px;
     margin-bottom: 25px;
     border-radius: 0; 
@@ -127,20 +147,16 @@ body {
 }
 
 
-/* === [字体] 文本排版样式 (h3 已更新) === */
+/* === 文本排版样式 (h3) === */
 .content-section h3 {
-    /* [字体] 切换为 ZCOOL XiaoWei */
     font-family: 'ZCOOL XiaoWei', serif;
-    
-    font-size: 1.6rem; /* 调整字体大小 */
-    color: #556b2f; /* 复古绿 */
+    font-size: 1.6rem; 
+    color: #556b2f; 
     margin-top: 2rem;
     margin-bottom: 1rem;
     border-bottom: 1px solid #eee;
     padding-bottom: 5px;
-    
-    /* [字体] 重置样式以适应新字体 */
-    font-weight: normal; /* 该字体自带粗细 */
+    font-weight: normal; 
     font-style: normal;
 }
 .content-section h4 {
@@ -203,11 +219,9 @@ body {
 /* ================================================= */
 @media (max-width: 768px) {
 
-    /* [背景] 在手机上取消背景固定, 
-       因为 'background-attachment: fixed' 在移动端表现很差 */
-    body {
-        background-attachment: scroll;
-    }
+    /* [背景] 之前用于修复 mobile fixed-bg 的 hack 已被移除, 
+       因为新的 'body::before' 方法同时适用于桌面和移动端。
+    */
 
     .sidebar {
         position: relative;
@@ -265,7 +279,6 @@ body {
     .content-section h2 {
         font-size: 1.8rem; 
     }
-    /* [字体] 调整 h3 在手机上的大小 */
     .content-section h3 {
         font-size: 1.4rem;
     }
