@@ -13,6 +13,9 @@ body {
     /* 这是一个来自 transparenttextures.com 的免费平铺纹理 */
     background-image: url('https://www.transparenttextures.com/patterns/floral.png');
     background-repeat: repeat; /* 平铺 */
+
+    /* === [修复] 添加这行代码, 强制禁止所有水平滚动 === */
+    overflow-x: hidden; 
 }
 
 /* 2. [删除] 顶部栏的 CSS 已被完全移除 */
@@ -47,7 +50,6 @@ body {
     padding-bottom: 1rem;
 }
 
-/* (sidebar-nav, scroll-button 等样式保持不变) */
 .sidebar-nav {
     list-style: none;
     padding: 0;
@@ -93,6 +95,9 @@ body {
     margin-top: 0; 
     margin-left: 260px; /* 220px 宽度 + 左右 padding 40px */
     padding: 40px;
+
+    /* === [修复] 添加这行代码, 确保 padding 不会撑开元素 === */
+    box-sizing: border-box; 
 }
 
 .content-section {
@@ -234,3 +239,23 @@ body {
         padding: 8px;
         width: 80%;
         margin-left: 10%;
+    }
+
+    /* [布局] .content 样式已在桌面端改为 0, 这里无需更改 */
+    .content {
+        margin-left: 0;
+        margin-top: 0; 
+        padding: 20px; 
+    }
+    
+    .content-section {
+        padding: 20px;
+    }
+
+    .content-section h2 {
+        font-size: 1.6rem;
+    }
+    .content-section h3 {
+        font-size: 1.3rem;
+    }
+}
