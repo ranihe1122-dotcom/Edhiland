@@ -1,36 +1,34 @@
-/* 1. 全局: 复古字体和背景 */
+/* 1. 全局: 字体和背景 */
 html {
     scroll-behavior: smooth;
 }
 
 body {
     margin: 0;
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", sans-serif;
     color: #4a3f35;
     
-    /* === [美化] 添加了花卉背景 === */
+    /* === [背景] 替换为新图片 === */
     background-color: #f5f1e8; /* 后备颜色 */
-    /* 这是一个来自 transparenttextures.com 的免费平铺纹理 */
     background-image: url('https://f2.toyhou.se/file/f2-toyhou-se/images/110666844_UaQVFbj3yDSmeyt.jpg');
-    background-repeat: repeat; /* 平铺 */
+    
+    /* [背景] 关键: 将背景图设为固定、铺满、不重复 */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed; /* 制造视差滚动效果 */
 
-    /* === [修复] 添加这行代码, 强制禁止所有水平滚动 === */
+    /* === [修复] 强制禁止所有水平滚动 === */
     overflow-x: hidden; 
 }
 
-/* 2. [删除] 顶部栏的 CSS 已被完全移除 */
-/* .top-bar, .logo-placeholder, .map-placeholder 已删除 */
-
-
-/* 3. 左侧导航栏 (调整) */
+/* 3. 左侧导航栏 */
 .sidebar {
     position: fixed;
-    /* [布局] top: 60px -> 0 */
     top: 0; 
     left: 0;
     
     width: 220px;
-    /* [布局] height: calc(100vh - 60px) -> 100vh */
     height: 100vh; 
     
     background-color: #6b5b4b; /* 复古的棕褐色 */
@@ -40,6 +38,8 @@ body {
     overflow-y: auto; 
     z-index: 1000;
     box-sizing: border-box; 
+    
+    font-family: Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", sans-serif;
 }
 
 .sidebar-header {
@@ -85,18 +85,14 @@ body {
     border-radius: 0;
     cursor: pointer;
     margin-top: 2rem;
-    font-family: Georgia, serif;
 }
 
 
-/* 4. 右侧内容区 (调整) */
+/* 4. 右侧内容区 */
 .content {
-    /* [布局] margin-top: 60px -> 0 */
     margin-top: 0; 
     margin-left: 260px; /* 220px 宽度 + 左右 padding 40px */
     padding: 40px;
-
-    /* === [修复] 添加这行代码, 确保 padding 不会撑开元素 === */
     box-sizing: border-box; 
 }
 
@@ -106,49 +102,54 @@ body {
     margin-bottom: 25px;
     border-radius: 0; 
     border: 1px solid #dcdcdc; 
-    
-    /* [美化] 调整了阴影, 使其更柔和 */
     box-shadow: 5px 5px 10px rgba(74, 63, 53, 0.1);
     min-height: 50vh; 
 }
 
 .content-section h2 {
+    font-family: 'ZCOOL XiaoWei', serif;
     color: #4a3f35;
     border-bottom: 2px dashed #cccccc;
     padding-bottom: 10px;
-    font-weight: bold;
-    
-    /* [美化] 居中并添加斜体, 更有设计感 */
+    font-weight: normal; 
+    font-style: normal; 
+    font-size: 2.2rem; 
     text-align: center;
-    font-style: italic;
-    font-size: 1.8rem; /* 稍微放大一点 */
 }
 
-/* === [新增] 地图图片样式 === */
+/* === 地图图片样式 === */
 .section-map {
-    width: 100%; /* 自动占满内容区宽度 */
-    height: auto; /* 保持宽高比 */
-    border: 2px solid #c8bdae; /* 匹配复古边框 */
-    box-sizing: border-box; /* 确保边框不会撑开 */
-    margin-bottom: 20px; /* 和下方内容隔开 */
+    width: 100%; 
+    height: auto; 
+    border: 2px solid #c8bdae; 
+    box-sizing: border-box; 
+    margin-bottom: 20px; 
 }
 
 
-/* (文本排版样式 h3, h4, ul 等保持不变) */
+/* === [字体] 文本排版样式 (h3 已更新) === */
 .content-section h3 {
-    font-size: 1.5rem;
+    /* [字体] 切换为 ZCOOL XiaoWei */
+    font-family: 'ZCOOL XiaoWei', serif;
+    
+    font-size: 1.6rem; /* 调整字体大小 */
     color: #556b2f; /* 复古绿 */
     margin-top: 2rem;
     margin-bottom: 1rem;
     border-bottom: 1px solid #eee;
     padding-bottom: 5px;
+    
+    /* [字体] 重置样式以适应新字体 */
+    font-weight: normal; /* 该字体自带粗细 */
+    font-style: normal;
 }
 .content-section h4 {
     font-size: 1.1rem;
     color: #4a3f35;
     margin-top: 1.5rem;
     margin-bottom: 0.5rem;
-    font-style: italic;
+    font-family: Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", sans-serif;
+    font-style: italic; 
 }
 .content-section ul {
     list-style-type: disc;
@@ -198,16 +199,20 @@ body {
 
 
 /* ================================================= */
-/* === (关键) 响应式布局 / 手机适配 === */
+/* === 响应式布局 / 手机适配 === */
 /* ================================================= */
 @media (max-width: 768px) {
 
-    /* [布局] 调整 .sidebar 的 margin-top */
+    /* [背景] 在手机上取消背景固定, 
+       因为 'background-attachment: fixed' 在移动端表现很差 */
+    body {
+        background-attachment: scroll;
+    }
+
     .sidebar {
         position: relative;
         width: 100%;
         top: 0;
-        /* [布局] margin-top: 60px -> 0 */
         margin-top: 0; 
         height: auto;
         z-index: 999;
@@ -215,7 +220,6 @@ body {
         border-bottom: 2px solid #c8bdae;
     }
 
-    /* (其他 .sidebar 内部样式不变) */
     .sidebar-header img {
         max-width: 50%; 
     }
@@ -234,14 +238,20 @@ body {
     .sidebar-nav a {
         padding: 8px 12px;
     }
+    
+    /* "返回顶部" 浮动按钮 */
     .scroll-button {
-        margin-top: 1rem;
-        padding: 8px;
-        width: 80%;
-        margin-left: 10%;
+        position: fixed; 
+        bottom: 20px; 
+        right: 20px; 
+        width: auto; 
+        padding: 10px 15px; 
+        margin: 0; 
+        z-index: 1002; 
+        border-radius: 5px; 
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
 
-    /* [布局] .content 样式已在桌面端改为 0, 这里无需更改 */
     .content {
         margin-left: 0;
         margin-top: 0; 
@@ -253,9 +263,10 @@ body {
     }
 
     .content-section h2 {
-        font-size: 1.6rem;
+        font-size: 1.8rem; 
     }
+    /* [字体] 调整 h3 在手机上的大小 */
     .content-section h3 {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
     }
 }
