@@ -1,0 +1,197 @@
+/* 1. 全局: 复古字体和背景 */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    /* 关键: 使用衬线字体 (Serif) 营造复古感 */
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    /* 关键: 旧纸张一样的米色背景 */
+    background-color: #f5f1e8;
+    /* 关键: 深棕色文字 */
+    color: #4a3f35;
+}
+
+/* 2. 新增的顶部栏 (已更新为地图背景) */
+.top-bar {
+    /* 关键: 固定在顶部 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    
+    /* 你可以根据需要调整这个高度 */
+    height: 60px; 
+    
+    /* 关键: 你的地图图片链接 */
+    background-image: url('https://f2.toyhou.se/file/f2-toyhou-se/images/110663779_wJ0aZ9wz0zMQqS0.jpg');
+    
+    /* 关键: 让图片铺满整个容器, 不会拉伸变形 */
+    background-size: cover;
+    
+    /* 关键: 图片从中间开始显示 */
+    background-position: center center;
+    
+    /* 关键: 防止图片平铺 */
+    background-repeat: no-repeat;
+    
+    /* 这是图片加载失败时的后备颜色 */
+    background-color: #4a3f35; 
+    
+    border-bottom: 3px solid #c8bdae; /* 复古的边框 */
+    box-sizing: border-box;
+    z-index: 1001;
+}
+
+.logo-placeholder {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.map-placeholder {
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+
+/* 3. 左侧导航栏 (调整) */
+.sidebar {
+    position: fixed;
+    /* 关键: top 必须是顶部栏的高度 */
+    top: 60px; 
+    left: 0;
+    
+    width: 220px;
+    /* 关键: 高度变为 100% 减去顶部栏的高度 */
+    height: calc(100vh - 60px); 
+    
+    background-color: #6b5b4b; /* 复古的棕褐色 */
+    color: #f5f1e8;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    overflow-y: auto; 
+    z-index: 1000; /* 层级低于 top-bar */
+}
+
+.sidebar-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    border-bottom: 1px dashed #f5f1e8;
+    padding-bottom: 1rem;
+}
+
+.sidebar-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-nav li {
+    margin-bottom: 5px;
+}
+
+.sidebar-nav a {
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+    color: #f5f1e8;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border-radius: 0; /* 关键: 去掉圆角，更显复古 */
+}
+
+.sidebar-nav a:hover {
+    background-color: #4a3f35; /* 悬停时用更深的棕色 */
+    padding-left: 20px; /* 简单的悬停效果 */
+}
+
+.sidebar-nav a.active {
+    background-color: #f5f1e8; /* 激活时反色 */
+    color: #4a3f35;
+    font-weight: bold;
+}
+
+.scroll-button {
+    width: 100%;
+    padding: 10px;
+    background-color: rgba(0,0,0,0.2);
+    color: white;
+    border: 1px solid #f5f1e8;
+    border-radius: 0;
+    cursor: pointer;
+    margin-top: 2rem;
+    font-family: Georgia, serif; /* 保持字体一致 */
+}
+
+/* 4. 右侧内容区 (调整) */
+.content {
+    /* 关键: 顶部外边距 (margin-top) 必须是顶部栏的高度 */
+    margin-top: 60px; 
+    /* 关键: 左侧外边距 (margin-left) 必须是侧边栏的宽度 */
+    margin-left: 260px; /* 220px 宽度 + 40px padding */
+    padding: 40px;
+}
+
+.content-section {
+    background-color: #fffdfa; /* 比背景稍白一点的"纸张"颜色 */
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 0; /* 去掉圆角 */
+    border: 1px solid #dcdcdc; /* 细边框 */
+    box-shadow: 3px 3px 5px rgba(0,0,0,0.05); /* 轻微阴影 */
+    min-height: 50vh; 
+}
+
+.content-section h2 {
+    color: #4a3f35;
+    /* 关键: 复古的虚线底部边框 */
+    border-bottom: 2px dashed #cccccc;
+    padding-bottom: 10px;
+    font-weight: bold;
+}
+
+/* 5. "Personality" 滑块样式 (复古) */
+.trait {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+    font-weight: normal;
+    color: #333;
+}
+.trait span {
+    width: 100px;
+    text-align: center;
+}
+.bar {
+    flex-grow: 1;
+    height: 10px;
+    background-color: #eee;
+    border-radius: 0;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    margin: 0 10px;
+}
+.bar div {
+    height: 100%;
+    background-color: #556b2f; /* 复古绿 */
+    border-radius: 0;
+}
+/* 这个新规则是专门为 .sidebar-header 里的图片准备的
+*/
+.sidebar-header img {
+    /* 关键: 最大宽度设为 100% (或稍小，比如 80%)，
+       这样它就不会超出父容器 (.sidebar-header) */
+    max-width: 80%;
+    
+    /* 保持图片的原始宽高比 */
+    height: auto;
+    
+    /* 图片默认是行内元素，设为 block 
+       可以帮助 text-align: center (在 .sidebar-header 上) 更好地居中它 */
+    display: block;
+    margin: 0 auto; /* 另一种居中方式 */
+}
