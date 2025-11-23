@@ -91,6 +91,8 @@ body::before {
     color: #4a3f35;
     font-weight: bold;
 }
+
+/* [修改] "返回顶部" 按钮样式 (恢复原状) */
 .scroll-button {
     width: 100%;
     padding: 10px;
@@ -99,11 +101,13 @@ body::before {
     border: 1px solid #f5f1e8;
     border-radius: 0;
     cursor: pointer;
-    margin-top: 2rem;
+    margin-top: 2rem; /* 恢复原来的 margin */
     
     /* [字体] 确保按钮也使用新字体 */
     font-family: 'ZCOOL XiaoWei', serif;
 }
+
+/* [已删除] .form-button 样式已被移除 */
 
 
 /* 4. 右侧内容区 */
@@ -215,13 +219,85 @@ body::before {
 
 
 /* ================================================= */
+/* === 5. 表单样式 (Form Styles) === */
+/* ================================================= */
+.form-declaration {
+    /* 使用半透明的浅红色背景来匹配内容区 */
+    background-color: rgba(255, 230, 230, 0.8);
+    border: 1px solid #c00; /* 红色边框 */
+    padding: 15px;
+    margin-top: 1rem; /* 从 h3 标题隔开 */
+    margin-bottom: 20px;
+    border-radius: 3px;
+}
+.form-declaration h3 {
+    font-family: 'ZCOOL XiaoWei', serif; /* 匹配其他标题 */
+    color: #c00; /* 红色文字 */
+    margin: 0 0 10px 0;
+    padding: 0;
+    border: none; /* 移除 h3 的默认边框 */
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    /* 确保 label 使用正文的黑体 */
+    font-family: Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", sans-serif;
+}
+
+.form-group input[type="text"],
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    box-sizing: border-box; /* 确保 padding 不会撑开 */
+    font-family: Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", sans-serif;
+    font-size: 1rem;
+    border-radius: 0; /* 保持复古风格 */
+}
+
+.form-group input[type="file"] {
+    font-family: Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", sans-serif;
+    width: 100%;
+}
+
+.form-note {
+    font-size: 0.9rem;
+    color: #666;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+.submit-button {
+    display: inline-block;
+    width: 100%;
+    padding: 12px;
+    background-color: #556b2f; /* 复古绿 */
+    color: white;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    margin-top: 1rem;
+    font-family: 'ZCOOL XiaoWei', serif; /* 匹配 sidebar 字体 */
+    font-size: 1.2rem;
+    transition: background-color 0.2s;
+}
+.submit-button:hover {
+    background-color: #4a3f35; /* 深棕色 */
+}
+
+
+
+/* ================================================= */
 /* === 响应式布局 / 手机适配 === */
 /* ================================================= */
 @media (max-width: 768px) {
-
-    /* [背景] 之前用于修复 mobile fixed-bg 的 hack 已被移除, 
-       因为新的 'body::before' 方法同时适用于桌面和移动端。
-    */
 
     .sidebar {
         position: relative;
@@ -253,6 +329,8 @@ body::before {
         padding: 8px 12px;
     }
     
+    /* [已删除] 浮动的 .form-button 样式已被移除 */
+    
     /* "返回顶部" 浮动按钮 */
     .scroll-button {
         position: fixed; 
@@ -260,7 +338,7 @@ body::before {
         right: 20px; 
         width: auto; 
         padding: 10px 15px; 
-        margin: 0; 
+        margin: 0; /* 重置 margin */
         z-index: 1002; 
         border-radius: 5px; 
         box-shadow: 0 2px 5px rgba(0,0,0,0.2);
