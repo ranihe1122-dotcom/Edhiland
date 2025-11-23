@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>伊德兰 Edhiland</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style-2.css"> 
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ZCOOL+XiaoWei">
 </head>
@@ -21,6 +21,7 @@
             <li><a href="#gallery">国家</a></li>
             <li><a href="#links">历史</a></li>
             <li><a href="#contact">角色</a></li> 
+            <li><a href="#form-submission">申请加入</a></li> 
         </ul>
         
         <button id="scrollToTop" class="scroll-button">返回顶部</button>
@@ -161,8 +162,59 @@
             <p>...</p><p>...</p><p>...</p><p>...</p<p>...</p><p>...</p>
         </section>
 
+        <section id="form-submission" class="content-section">
+            <h2>申请加入世界观</h2>
+
+            <div class="form-declaration">
+                <h3>声明</h3>
+                <p>禁止：R18/概念神/比四神强大的设定/过于恐怖的G向设定/政治相关</p>
+            </div>
+
+            <form id="oc-form" action="https://getform.io/f/agdjxdvb" method="POST" enctype="multipart/form-data">
+                
+                <div class="form-group">
+                    <label for="q1-name">问题1：名字</label>
+                    <input type="text" id="q1-name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="q2-info">问题2：基本信息</label>
+                    <textarea id="q2-info" name="basic_info" rows="5" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="q3-race">问题3：种族</label>
+                    <input type="text" id="q3-race" name="race" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="q4-country">问题4：所属国家</label>
+                    <input type="text" id="q4-country" name="country" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="q5-arcana">问题5：奥术</label>
+                    <input type="text" id="q5-arcana" name="arcana" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="q6-profession">问题6：职业</label>
+                    <input type="text" id="q6-profession" name="profession" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="q7-images">问题7：OC图片</label>
+                    <input type="file" id="q7-images" name="oc_images" accept="image/png, image/jpeg, image/jpg, image/webp" multiple>
+                    <p class="form-note">最多三张，单张不超过5MB，禁止动图。</p>
+                </div>
+                
+                <button type="submit" class="submit-button">提交申请</button>
+            
+            </form>
+        </section>
+
     </main>
 
-    <script src="script.js"></script>
+    <script src="script-2.js"></script>
 </body>
 </html>
