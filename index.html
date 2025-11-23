@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-AR-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>伊德兰 Edhiland</title>
     <link rel="stylesheet" href="style.css"> 
@@ -134,7 +134,7 @@
 
             <h4>关于灵消散</h4>
             <p><strong>灵消散程度较低：</strong>空气中的灵性变得稀薄，富有灵性的动植物受到生存威胁，奥术师本身的灵自然恢复速度减缓。</p>
-            <p><strong>灵消散动摇世界本源：</strong>心域权柄动摇可能导致范围失忆，精神恍惚，记忆紊乱等；相律权柄动摇可能导致重力失序，空间紊乱等；命式权柄动摇可能导致时间乱流，因果谬误，概率失衡；塑界权柄动摇可能导致虚无空洞，幻象频发。</p>
+            <p><strong>灵消散动摇世界本源：</strong>心域权柄动摇可能导致范围失忆，精神恍惚，记忆紊乱等；相律权柄动G摇可能导致重力失序，空间紊乱等；命式权柄动摇可能导致时间乱流，因果谬误，概率失衡；塑界权柄动摇可能导致虚无空洞，幻象频发。</p>
 
             <h3>神明</h3>
             <ul>
@@ -174,38 +174,43 @@
                 
                 <div class="form-group">
                     <label for="q1-name">问题1：名字</label>
-                    <input type="text" id="q1-name" name="name" required>
+                    <input type="text" id="q1-name" name="name" required maxlength="20">
                 </div>
                 
                 <div class="form-group">
                     <label for="q2-info">问题2：基本信息</label>
-                    <textarea id="q2-info" name="basic_info" rows="5" required></textarea>
+                    <textarea id="q2-info" name="basic_info" rows="5" required maxlength="100"></textarea>
                 </div>
                 
                 <div class="form-group">
                     <label for="q3-race">问题3：种族</label>
-                    <input type="text" id="q3-race" name="race" required>
+                    <input type="text" id="q3-race" name="race" required maxlength="20">
                 </div>
                 
                 <div class="form-group">
                     <label for="q4-country">问题4：所属国家</label>
-                    <input type="text" id="q4-country" name="country" required>
+                    <input type="text" id="q4-country" name="country" required maxlength="20">
                 </div>
                 
                 <div class="form-group">
                     <label for="q5-arcana">问题5：奥术</label>
-                    <input type="text" id="q5-arcana" name="arcana" required>
+                    <input type="text" id="q5-arcana" name="arcana" required maxlength="20">
                 </div>
                 
                 <div class="form-group">
                     <label for="q6-profession">问题6：职业</label>
-                    <input type="text" id="q6-profession" name="profession" required>
+                    <input type="text" id="q6-profession" name="profession" required maxlength="20">
                 </div>
                 
                 <div class="form-group">
                     <label for="q7-images">问题7：OC图片</label>
                     <input type="file" id="q7-images" name="oc_images" accept="image/png, image/jpeg, image/jpg, image/webp" multiple>
                     <p class="form-note">最多三张，单张不超过5MB，禁止动图。</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="q8-contact">问题8：联系方式 (微信)</label>
+                    <input type="text" id="q8-contact" name="contact_wechat" required maxlength="50">
                 </div>
                 
                 <button type="submit" class="submit-button">提交申请</button>
