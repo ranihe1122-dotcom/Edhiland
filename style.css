@@ -91,8 +91,6 @@ body::before {
     color: #4a3f35;
     font-weight: bold;
 }
-
-/* [修改] "返回顶部" 按钮样式 (恢复原状) */
 .scroll-button {
     width: 100%;
     padding: 10px;
@@ -101,13 +99,11 @@ body::before {
     border: 1px solid #f5f1e8;
     border-radius: 0;
     cursor: pointer;
-    margin-top: 2rem; /* 恢复原来的 margin */
+    margin-top: 2rem;
     
     /* [字体] 确保按钮也使用新字体 */
     font-family: 'ZCOOL XiaoWei', serif;
 }
-
-/* [已删除] .form-button 样式已被移除 */
 
 
 /* 4. 右侧内容区 */
@@ -222,20 +218,19 @@ body::before {
 /* === 5. 表单样式 (Form Styles) === */
 /* ================================================= */
 .form-declaration {
-    /* 使用半透明的浅红色背景来匹配内容区 */
     background-color: rgba(255, 230, 230, 0.8);
-    border: 1px solid #c00; /* 红色边框 */
+    border: 1px solid #c00; 
     padding: 15px;
-    margin-top: 1rem; /* 从 h3 标题隔开 */
+    margin-top: 1rem; 
     margin-bottom: 20px;
     border-radius: 3px;
 }
 .form-declaration h3 {
-    font-family: 'ZCOOL XiaoWei', serif; /* 匹配其他标题 */
-    color: #c00; /* 红色文字 */
+    font-family: 'ZCOOL XiaoWei', serif; 
+    color: #c00; 
     margin: 0 0 10px 0;
     padding: 0;
-    border: none; /* 移除 h3 的默认边框 */
+    border: none; 
 }
 
 .form-group {
@@ -246,7 +241,6 @@ body::before {
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
-    /* 确保 label 使用正文的黑体 */
     font-family: Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", sans-serif;
 }
 
@@ -256,10 +250,10 @@ body::before {
     padding: 10px;
     border: 1px solid #ccc;
     background-color: #fff;
-    box-sizing: border-box; /* 确保 padding 不会撑开 */
+    box-sizing: border-box; 
     font-family: Helvetica, Arial, "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", sans-serif;
     font-size: 1rem;
-    border-radius: 0; /* 保持复古风格 */
+    border-radius: 0; 
 }
 
 .form-group input[type="file"] {
@@ -284,7 +278,7 @@ body::before {
     border-radius: 0;
     cursor: pointer;
     margin-top: 1rem;
-    font-family: 'ZCOOL XiaoWei', serif; /* 匹配 sidebar 字体 */
+    font-family: 'ZCOOL XiaoWei', serif; 
     font-size: 1.2rem;
     transition: background-color 0.2s;
 }
@@ -292,6 +286,112 @@ body::before {
     background-color: #4a3f35; /* 深棕色 */
 }
 
+
+/* ================================================= */
+/* === 6. 角色弹窗 (Modal) 样式 === */
+/* ================================================= */
+
+/* 角色链接的简单样式 (在 #contact 部分) */
+.character-links {
+    list-style: none;
+    padding: 0;
+}
+.character-links a {
+    font-size: 1.2rem;
+    color: #556b2f; /* 复古绿 */
+    text-decoration: none;
+    font-family: 'ZCOOL XiaoWei', serif;
+}
+.character-links a:hover {
+    text-decoration: underline;
+}
+
+
+/* 弹窗背景 (黑色半透明遮罩) */
+.modal-overlay {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); 
+    display: none; /* [关键] 默认隐藏 */
+    z-index: 2000; 
+    justify-content: center;
+    /* [修改] 移除 align-items: center;, 让弹窗从顶部开始 */
+    
+    /* [新增] 遮罩本身可以滚动 */
+    overflow-y: auto; 
+    
+    padding: 40px 20px; /* [修改] 顶部和底部留出 40px 空间 */
+    box-sizing: border-box;
+}
+
+/* [关键] 当我们用 JS 添加 'visible' 类时, 弹窗显示 */
+.modal-overlay.visible {
+    display: flex; 
+}
+
+/* 弹窗内容 (现在是一个透明的容器) */
+.modal-content {
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    
+    width: auto; 
+    max-width: 800px; 
+    
+    /* [修改] 移除 max-height, 允许内容撑开 */
+    
+    overflow: visible; 
+    position: relative; 
+}
+
+/* 弹窗内的档案图片 */
+.modal-profile-image {
+    display: block;
+    width: 100%; 
+    height: auto; 
+    
+    /* [修改] 移除 max-height, 允许图片使用原始高度 */
+}
+
+
+/* 弹窗关闭按钮 (右上角的 'X') */
+.modal-close {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    
+    background: #fff;
+    border: none;
+    border-radius: 50%; /* 圆形 */
+    width: 30px;
+    height: 30px;
+    
+    font-size: 1.5rem; 
+    color: #4a3f35;
+    cursor: pointer;
+    font-family: Arial, sans-serif; 
+    
+    line-height: 30px;
+    text-align: center;
+    padding: 0;
+    
+    z-index: 10; 
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+.modal-close:hover {
+    color: #c00; 
+    background: #eee;
+}
+
+
+/* ================================================= */
+/* === 7. [已删除] 角色档案 (Profile) 布局 === */
+/* ================================================= */
+/* 之前所有的 .char-profile 样式已全部删除 */
 
 
 /* ================================================= */
@@ -329,8 +429,6 @@ body::before {
         padding: 8px 12px;
     }
     
-    /* [已删除] 浮动的 .form-button 样式已被移除 */
-    
     /* "返回顶部" 浮动按钮 */
     .scroll-button {
         position: fixed; 
@@ -352,6 +450,22 @@ body::before {
     
     .content-section {
         padding: 20px;
+    }
+
+    /* [修改] 弹窗在手机上 */
+    .modal-overlay {
+        padding: 20px 10px; /* 手机上 padding 更小 */
+    }
+    .modal-content {
+        width: 100%; 
+        max-width: 100%; 
+        /* [修改] 移除 max-height, 允许滚动 */
+    }
+    /* 手机上关闭按钮放在图片内部, 否则会出屏 */
+    .modal-close {
+        top: 5px;
+        right: 5px;
+        background: rgba(255, 255, 255, 0.7); /* 半透明 */
     }
 
     .content-section h2 {
