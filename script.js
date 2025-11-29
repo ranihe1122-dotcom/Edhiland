@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     
     // --- 2. [功能] 点击链接时平滑滚动 + 立即高亮 ---
-    // (这段代码必须在 "sections" 被定义之后)
     if (navLinks.length > 0 && sections.length > 0) {
         navLinks.forEach(function(link) {
             link.addEventListener('click', function(event) {
@@ -28,7 +27,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     
     // --- 3. [功能] "返回顶部" 按钮 ---
-    // (这段代码必须在 "scrollToTopButton" 被定义之后)
     if (scrollToTopButton) {
         scrollToTopButton.addEventListener('click', function() {
             window.scrollTo({
@@ -40,7 +38,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     
     // --- 4. "ScrollSpy" (滚动侦测) 功能 ---
-    // (这段代码必须在 "sections" 和 "navLinks" 被定义之后)
     if (sections.length > 0 && navLinks.length > 0) {
         
         function updateActiveLinkOnScroll() {
@@ -68,7 +65,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     // --- 5. 表单验证 (Form Validation) ---
-    // (这段代码必须在 "form" 和 "fileInput" 被定义之后)
     if (form && fileInput) {
         
         fileInput.addEventListener('change', function() {
@@ -96,5 +92,53 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+
+    
+    // --- 6. 角色弹窗 (Modal) 逻辑 ---
+    
+    // 找到所有的“打开”链接
+    const openModalLinks = document.querySelectorAll('[data-modal-target]');
+    // 找到所有的“关闭”按钮
+    const closeModalButtons = document.querySelectorAll('.modal-close');
+
+    // 监听所有“打开”链接
+    openModalLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault(); // 阻止链接默认的 "#" 跳转
+            
+            // 1. 获取目标弹窗的 ID
+            const modalId = link.getAttribute('data-modal-target');
+            const modal = document.getElementById(modalId);
+            
+            // 2. 显示这个弹窗
+            if (modal) {
+                modal.classList.add('visible');
+            }
+        });
+    });
+
+    // 监听所有“关闭”按钮
+    closeModalButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            // 找到这个按钮所在的弹窗 (父元素)
+            const modal = button.closest('.modal-overlay');
+            
+            // 隐藏这个弹窗
+            if (modal) {
+                modal.classList.remove('visible');
+            }
+        });
+    });
+    
+    // (可选) 点击遮罩背景时也关闭弹窗
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+        overlay.addEventListener('click', function(event) {
+            // 检查点击的是否是遮罩本身 (而不是内容卡片)
+            if (event.target === overlay) {
+                overlay.classList.remove('visible');
+            }
+        });
+    });
+
 
 }); // [关键] 确保这是文件的最后一行
